@@ -1,0 +1,79 @@
+
+body{ 
+    /* flex: 1; */
+    background-image: white;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Altura mínima del cuerpo para ocupar toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    }
+    main {
+        flex: 1; /* Hace que el contenido principal (main) ocupe todo el espacio restante */
+    }
+
+
+/* Estilos CSS para el navbar */
+.navbar {
+    width: 100%;
+    background-color:  plum; /* Color de fondo del navbar */
+    color: white;  /* Color del texto, cambiado a blanco para mayor contraste */
+    padding: 10px;  /* Ajusta el relleno según tus necesidades */
+    box-sizing: border-box;  /* Garantiza que el relleno no afecte el ancho total */
+    text-align: center; /* Centrado del texto */
+    font-size: 20px; /* Tamaño de fuente más grande */
+    font-family: Arial, sans-serif; /* Fuente del texto, puedes cambiarla según tus preferencias */
+}
+
+
+.media-item {
+    max-width: 300px; /* Define el ancho máximo */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+
+/* styles.css */
+.media-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.media-item {
+    margin-bottom: 20px; /* Espacio entre elementos */
+}
+
+.media-content {
+    max-width: 300px; /* Ancho máximo para la imagen o video */
+}
+
+.comment {
+    margin-left: 20px; /* Espacio entre la imagen/video y el comentario */
+}
+#inicio {
+    text-align: center;
+    padding-top: 30px;
+    font-family: 'Arial', sans-serif; /* Elige una fuente atractiva */
+    font-size: 24px; /* Tamaño de fuente adecuado */
+    font-weight: bold; /* Texto en negrita */
+    letter-spacing: 1px; /* Ajusta el espaciado entre letras */
+    line-height: 1.5; /* Ajusta la altura de línea para mejorar la legibilidad */
+    color: #333; /* Color del texto */
+}
+
+
+.bg-magenta {
+    background-color:  plum; 
+}
+
+.card-header {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+
+.card-text {
+    font-family: 'Arial', sans-serif;
+    text-align: justify;
+}

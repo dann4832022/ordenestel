@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+<title>Eliminar</title>
+{% endblock %}
+
+
+{% block contenido %}
+<h1>Confirmar Eliminar Archivo</h1>
+
+<p>¿Estás seguro de que deseas eliminar el archivo "{{ archivo.nombre }}"?</p>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Eliminar">
+</form>
+
+<a href="{% url 'apps.carga_archivos:listar_archivos_excel' %}">Cancelar</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+<title>Listar Archivos Excel</title>
+{% endblock %}
+
+{% block contenido %}
+<h2>Listado de Archivos Excel</h2>
+<ul>
+    {% for archivo in archivos %}
+        <li>{{ archivo.nombre }} - <a href="{{ archivo.archivo.url }}">Descargar</a></li>
+    {% endfor %}
+</ul>
+<!-- listar_archivos_excel.html -->
+
+{% for archivo in archivos %}
+    <p>{{ archivo.nombre }}</p>
+    <!-- Agrega un formulario para enviar una solicitud POST cuando se hace clic en el botón Eliminar -->
+    <form action="{% url 'apps.carga_archivos:eliminar_archivo' archivo.id %}" method="post">
+    
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este archivo?')">Eliminar</button>
+    </form>
+{% endfor %}
+
+{% endblock %}

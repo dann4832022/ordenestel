@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+<div>
+ 
+    <div>
+        <h1 style="font-family: 'Arial', sans-serif; text-align: center; font-size: 36px;">Novedades</h1>
+        <!-- Resto de tu código HTML -->
+    </div>
+    
+    <div class="row" style="width: 100%;"> <!-- Establecer el ancho al 100% -->
+        {% for media_item in media_items %}
+            <div class="col-md-4"> <!-- Aumentamos el tamaño de la columna -->
+                <div class="card mb-4 box-shadow">
+                    <h3 class="card-header" style="font-family: 'Roboto', sans-serif; text-align: center;">{{ media_item.titulo }}</h3>
+
+                    <div class="card-body">
+                        <div class="media-wrapper">
+                            {% if media_item.archivo.url %}
+                                {% if media_item.archivo.url|lower|slice:"-3:" == "mp4" %}
+                                    <video controls class="media-content" style="width:100%">
+                                        <source src="{{ media_item.archivo.url }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                {% else %}
+                                    <img src="{{ media_item.archivo.url }}" alt="{{ media_item.titulo }}" class="media-content img-fluid" style="width:100%">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        <p class="card-text" style="font-family: 'Arial', sans-serif; text-align: justify;">{{ media_item.comentario }}</p>
+
+                        {% if user.is_superuser %}
+                            <form action="{% url 'apps.contenido:eliminar_media' media_item.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

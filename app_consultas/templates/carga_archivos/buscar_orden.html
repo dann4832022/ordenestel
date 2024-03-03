@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+    <style>
+        /* Estilos para centrar el contenido */
+        form {
+            text-align: center;
+        }
+
+        ul {
+            text-align: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Estilos para las fuentes */
+        h1 {
+            font-family: 'Arial', sans-serif;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        li {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <h1>Buscar Orden</h1>
+    <form method="GET" action="">
+   
+        <label for="q">Iniciar busqueda:</label>
+        <input type="text" id="q" name="q" required>
+        <button type="submit">Buscar</button><br><br>
+        <p style="text-decoration: underline;">Se puede consultar por:</p>
+        <p>Nº de Orden.</p>
+        <p>Nombre de Representate o Lider.</p>
+        <p>Cualquier duda o consulta contacte con nosotros.</p>
+    </form>
+
+
+
+    {% if resultados %}
+        <h2>Resultados de la búsqueda:</h2>
+        <ul>
+            {% for resultado in resultados %}
+            <li>
+                <strong>Numero orden:</strong> <strong>{{ resultado.Orden }}</strong> <br>
+            
+                <strong>Fecha Inicio De Orden:</strong> {{ resultado.Fecha }} <br>
+                <strong>Linea:</strong> {{ resultado.Linea }} <br>
+                <strong>Fehca de Cita Inicial "T3":</strong> {{ resultado.Cita }} <br>
+                <strong>Estado:</strong> {{ resultado.Motivo }} <br>
+                <strong>Representante:</strong> {{ resultado.Rep }} <br>
+                <strong>Lider:</strong> {{ resultado.Lider }} <br>
+                <strong>Devolución:</strong> {{ resultado.Devolución }} <br>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
